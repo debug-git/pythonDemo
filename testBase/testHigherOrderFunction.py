@@ -1,6 +1,8 @@
 #高阶函数
 # 把函数作为参数传入，这样的函数称为高阶函数，
 # 函数式编程就是指这种高度抽象的编程范式。
+# -*- coding: utf-8 -*-
+from collections import Iterator, Iterable
 from functools import reduce
 
 # x = abs(-10)
@@ -17,7 +19,7 @@ print("*********分割线************")
 def f(x):
     return x*x;
 r = map(f, range(10))
-print(r)
+print(isinstance(r, Iterator))      #True
 print(list(r))
 
 print("*********分割线************")
@@ -25,7 +27,7 @@ print("*********分割线************")
 # 这个函数必须接收两个参数，reduce把结果继续和序列的下一个元素做累积计算
 def add(x, y):
     return x + y;
-print(reduce(add, [1, 3, 5, 7, 9]))
+print(reduce(add, [1, 2, 3, 4, 5]))
 
 print("*********字符串转数字分割线************")
 # 如果考虑到字符串str也是一个序列，对上面的例子稍加改动，配合map()，
@@ -59,3 +61,17 @@ def char2num(s):
 def str2int(s):
     return reduce(lambda x, y: x * 10 + y, map(char2num, s))
 print(str2int("1011212"))
+
+
+print('*********lambda函数分割线*********')
+# 利用map和reduce编写一个str2float函数，把字符串'123.456'转换成浮点数123.456：
+def str2float(s):
+    idx = s.find(".")
+    prefix = s[ : idx]
+    suffix = s[idx+1 : ]
+    return str2int(prefix) + str2int(suffix)/(10**len(suffix))
+print('str2float(\'123.456\') =', str2float('123.456'))
+if abs(str2float('123.456') - 123.456) < 0.00001:
+    print('测试成功!')
+else:
+    print('测试失败!')
