@@ -70,5 +70,5 @@ print(f1(), f2(), f3())
 print("************************")
 print("lambda表达式到底是个啥")
 x = lambda j : j*j
-print(x)    # lambda表达式返回的是一个函数
+print(x)    # lambda表达式返回的是一个函数。lambda表达式是一行函数，它们在其他语言中也被称为匿名函数。
 print(x(100))
