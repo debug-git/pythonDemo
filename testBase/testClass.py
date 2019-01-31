@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import mymodule
 # 定义一个类,括号里是继承
 class Student(object):
     def __init__(self, name, score):
@@ -64,7 +63,7 @@ obj = MyObject()
 print(hasattr(obj, 'x'))  #是否有属性x ,返回True
 print(hasattr(obj, 'y'))  #是否有属性y ,返回False
 print(getattr(obj, 'x'))  #获取属性x的值
-# print(getattr(obj, 'fds')) #如果试图获取不存在的属性，会抛出AttributeError的错误,当报错时下面代码不会执行
+print(getattr(obj, 'fds')) #如果试图获取不存在的属性，会抛出AttributeError的错误,当报错时下面代码不会执行
 print(getattr(obj, 'z', 'default')) #可以传入一个default参数，如果属性不存在，就返回默认值：
 setattr(obj, 'name', 'newName') #setattr可以设置值
 print(getattr(obj, 'name'))
